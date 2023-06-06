@@ -36,6 +36,16 @@ app-generator .generated-block {
     }
   }
 
+  .generated-wrapper.hidden {
+    span {
+      -moz-text-security: disc;
+      -webkit-text-security: disc;
+    }
+    span.password-number {
+      color: #000;
+    }
+  }
+
   .action-buttons {
     display: flex;
     align-self: center;

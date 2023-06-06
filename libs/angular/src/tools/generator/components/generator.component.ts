@@ -26,6 +26,9 @@ export class GeneratorComponent implements OnInit {
   forwardOptions: EmailForwarderOptions[];
   usernameOptions: any = {};
   passwordOptions: any = {};
+  passwordVisibility = false;
+  firstTime = true;
+  spanListCopy: HTMLElement;
   username = "-";
   password = "-";
   showOptions = false;
@@ -182,6 +185,14 @@ export class GeneratorComponent implements OnInit {
     } catch (e) {
       this.logService.error(e);
     }
+  }
+
+  toggleVisibility() {
+    (document.querySelector(".generated-wrapper") as HTMLElement).classList.toggle("hidden");
+    (document.getElementById("toggleVisibilityBtn") as HTMLElement).classList.toggle("bwi-eye");
+    (document.getElementById("toggleVisibilityBtn") as HTMLElement).classList.toggle(
+      "bwi-eye-slash"
+    );
   }
 
   copy() {

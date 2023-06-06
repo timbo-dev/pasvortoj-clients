@@ -19,7 +19,12 @@
     {{ "passwordGeneratorPolicyInEffect" | i18n }}
   </app-callout>
   <div class="generated-block" *ngIf="type === 'password'">
-    <div class="generated-wrapper" [innerHTML]="password | colorPassword" appSelectCopy></div>
+    <div
+      id="generated-block-pass"
+      class="generated-wrapper hidden"
+      [innerHTML]="password | colorPassword"
+      appSelectCopy
+    ></div>
     <div class="action-buttons">
       <button
         type="button"
@@ -38,10 +43,22 @@
       >
         <i class="bwi bwi-lg bwi-generate" aria-hidden="true"></i>
       </button>
+      <button
+        type="button"
+        appStopClick
+        appA11yTitle="{{ 'toggleVisibility' | i18n }}"
+        (click)="toggleVisibility()"
+      >
+        <i id="toggleVisibilityBtn" class="bwi bwi-lg bwi-eye" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
-  <div class="generated-block" *ngIf="type === 'username'">
-    <div class="generated-wrapper" [innerHTML]="username | colorPassword" appSelectCopy></div>
+  <div id="generated-block-pass" class="generated-block" *ngIf="type === 'username'">
+    <div
+      class="generated-wrapper hidden"
+      [innerHTML]="username | colorPassword"
+      appSelectCopy
+    ></div>
     <div class="action-buttons" #form [appApiAction]="usernameGeneratingPromise">
       <button
         type="button"
@@ -64,6 +81,15 @@
           [ngClass]="$any(form).loading ? 'bwi-spin' : ''"
           aria-hidden="true"
         ></i>
+      </button>
+
+      <button
+        type="button"
+        appStopClick
+        appA11yTitle="{{ 'toggleVisibility' | i18n }}"
+        (click)="toggleVisibility()"
+      >
+        <i id="toggleVisibilityBtn" class="bwi bwi-lg bwi-eye" aria-hidden="true"></i>
       </button>
     </div>
   </div>
